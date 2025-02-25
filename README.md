@@ -7,9 +7,9 @@ This project is a simple URL shortening service built with Laravel. It provides 
 
 ## Stack
 
-Laravel 12
-PHP 8.2.27
-Docker
+Laravel 12,
+PHP 8.2.27,
+Docker,
 MySQL 8.0.23
 
 ## Setup
