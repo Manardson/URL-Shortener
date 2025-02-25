@@ -3,34 +3,32 @@
 namespace App\Services;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 class URLShortenerService
 {
-    // In-memory storage for URL mappings
-    private static $urlMap = [];
-
     /**
-     * Encode a URL into a short code.
+     * Encode a URL into a short code and store it to Db Cache forever.
      *
      * @param string $url
      * @return string
      */
     public static function encode(string $url): string
     {
-        // Generate a random 6-character code
         $code = Str::random(6);
-        self::$urlMap[$code] = $url;
+        // Save the URL mapping indefinitely with a unique key.
+        Cache::forever("short_url:{$code}", $url);
         return $code;
     }
 
     /**
-     * Decode the short code back into the original URL.
+     * Decode a short code back to the original URL.
      *
      * @param string $code
      * @return string|null
      */
     public static function decode(string $code): ?string
     {
-        return self::$urlMap[$code] ?? null;
+        return Cache::get("short_url:{$code}");
     }
 }

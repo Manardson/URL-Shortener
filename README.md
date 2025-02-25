@@ -42,6 +42,18 @@ To spin down the docker compose orchestration:
 
 On any nginx changes just compose down and build, then up again.
 
+3. **Testing**
+
+    ```bash
+    php artisan test
+   
+4. **Routes Cache**
+
+    ```bash
+    php artisan route:clear
+    php artisan config:clear
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
