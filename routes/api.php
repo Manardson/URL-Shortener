@@ -1,7 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\URLShortenerController;
 
-Route::post('/encode', [URLShortenerController::class, 'encode']);
-Route::post('/decode', [URLShortenerController::class, 'decode']);
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');

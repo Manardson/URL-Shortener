@@ -5,6 +5,13 @@ This project is a simple URL shortening service built with Laravel. It provides 
 - **POST /api/encode**: Accepts a JSON payload with a URL and returns a shortened URL.
 - **POST /api/decode**: Accepts a JSON payload with a shortened URL and returns the original URL.
 
+## Stack
+
+Laravel 12
+PHP 8.2.27
+Docker
+MySQL 8.0.23
+
 ## Setup
 
 1. **Clone the Repository**
@@ -12,6 +19,28 @@ This project is a simple URL shortening service built with Laravel. It provides 
    ```bash
    git clone https://github.com/Manardson/URL-Shortener.git
    cd URL-Shortener
+
+2. **How to Run the project**
+
+Add url.local to your hosts file
+.env file from email put it in this directory
+
+    ```bash
+    docker network create url
+    docker compose build
+    docker compose up -d
+    docker compose exec php bash
+    chmod 777 -R storage
+    chmod 777 -R bootstrap/cache
+    composer install --prefer-dist --no-scripts
+    php artisan migrate:fresh --seed
+
+To spin down the docker compose orchestration:
+
+    ```bash
+    docker compose down
+
+On any nginx changes just compose down and build, then up again.
 
 ## About Laravel
 
